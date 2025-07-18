@@ -27,7 +27,8 @@ export const Image = ({
       {loading && (
         <div
           className={cn(
-            'absolute inset-0 w-full h-full bg-[radial-gradient(at_center,_#27272a,_#3f3f46)] animate-pulse blur-sm rounded-lg'
+            'absolute inset-0 w-full h-full bg-[radial-gradient(at_center,_#27272a,_#3f3f46)] animate-pulse blur-sm rounded-lg',
+            className
           )}
         />
       )}
@@ -41,7 +42,9 @@ export const Image = ({
         onLoad={() => setLoading(false)}
         srcSet={`${src}?w=500 500w, ${src}?w=1000 1000w, ${src}?w=1500 1500w`}
         className={cn(
-          `object-cover object-center w-full h-full transition-opacity duration-300 ${loading ? 'opacity-0' : 'opacity-100'}`,
+          `object-cover object-center w-full h-full transition-opacity duration-300 ${
+            loading ? 'opacity-0' : 'opacity-100'
+          }`,
           className
         )}
       />

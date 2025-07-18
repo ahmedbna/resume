@@ -7,6 +7,7 @@ import Globe from '@/components/globe';
 import Particles from '@/components/particles';
 import { Image } from '@/components/ui/image';
 import { Button } from './ui/button';
+import { ModeToggle } from './ui/mode-toggle';
 
 // Icon components
 const icons = {
@@ -83,25 +84,28 @@ const socialLinks = [
 // Projects data
 const projects = [
   {
-    title: 'Project One',
-    description: 'A brief description of your first project',
-    image: '/project1.jpg', // Replace with your project image
-    url: 'https://project1.com', // Replace with your project URL
-    github: 'https://github.com/yourusername/project1', // Replace with project GitHub URL
+    title: 'BNA UI',
+    description: 'Expo React Native ui components library',
+    image: '/bna-ui-header.png',
+    url: 'https://ui.ahmedbna.com/',
   },
   {
-    title: 'Project Two',
-    description: 'A brief description of your second project',
-    image: '/project2.jpg', // Replace with your project image
-    url: 'https://project2.com', // Replace with your project URL
-    github: 'https://github.com/yourusername/project2', // Replace with project GitHub URL
+    title: 'Catwalk',
+    description: 'AI fashion',
+    image: '/catwalk.png',
+    url: 'https://www.catwalk-ai.com/',
   },
   {
-    title: 'Project Three',
-    description: 'A brief description of your third project',
-    image: '/project3.jpg', // Replace with your project image
-    url: 'https://project3.com', // Replace with your project URL
-    github: 'https://github.com/yourusername/project3', // Replace with project GitHub URL
+    title: 'AI Super App',
+    description: 'AI Super App',
+    image: '/ai-super.png',
+    url: 'https://ai.ahmedbna.com/',
+  },
+  {
+    title: 'AI Cad',
+    description: 'AI Cad App',
+    image: '/ai-cad.png',
+    url: 'https://cad.ahmedbna.com/',
   },
 ];
 
@@ -114,8 +118,8 @@ export const HeroSection = () => {
         <Image
           height={200}
           width={200}
-          src='/bna-cyberpunk.png'
           alt={'BNA'}
+          src='/bna-cyberpunk.png'
           className='rounded-full w-72 h-72'
         />
 
@@ -124,14 +128,16 @@ export const HeroSection = () => {
         </h1>
 
         {/* Social Media Links */}
-        <div className='flex items-center gap-4 mt-2'>
+        <div className='flex items-center gap-2'>
+          <ModeToggle />
+
           {socialLinks.map((link) => (
             <Button
               asChild
               key={link.name}
               size='icon'
               variant='ghost'
-              className='size-12'
+              className='size-10'
             >
               <Link
                 key={link.name}
@@ -141,7 +147,7 @@ export const HeroSection = () => {
                 className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200'
                 aria-label={link.name}
               >
-                <link.icon className='w-16 h-16' />
+                <link.icon className='size-5' />
               </Link>
             </Button>
           ))}
@@ -149,11 +155,15 @@ export const HeroSection = () => {
       </div>
 
       {/* Projects Section */}
-      {/* <div className='w-full max-w-6xl mx-auto px-4 mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+      <div className='w-full max-w-6xl mx-auto px-4 mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {projects.map((project, index) => (
-          <div
+          <Link
             key={index}
-            className='bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105'
+            href={project.url}
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label={`View ${project.title}`}
+            className='cursor-pointer rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105'
           >
             <div className='relative group'>
               <Image
@@ -163,41 +173,17 @@ export const HeroSection = () => {
                 height={250}
                 className='w-full h-48 object-cover'
               />
-              <div className='absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
-                <div className='flex gap-4'>
-                  <Link
-                    href={project.url}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='bg-white text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200'
-                    aria-label={`View ${project.title}`}
-                  >
-                    <icons.externalLink className='w-5 h-5' />
-                  </Link>
-                  <Link
-                    href={project.github}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='bg-white text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200'
-                    aria-label={`View ${project.title} on GitHub`}
-                  >
-                    <icons.gitHub className='w-5 h-5' />
-                  </Link>
-                </div>
-              </div>
             </div>
 
             <div className='p-6'>
-              <h3 className='text-xl font-semibold mb-2 text-gray-900 dark:text-white'>
-                {project.title}
-              </h3>
-              <p className='text-gray-600 dark:text-gray-300 text-sm'>
+              <h3 className='text-xl font-semibold mb-2'>{project.title}</h3>
+              <p className='text-muted-foreground text-sm'>
                 {project.description}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
-      </div> */}
+      </div>
 
       <div className='relative flex h-full w-full max-w-full items-center justify-center overflow-hidden rounded-lg  pb-40 md:pb-72'>
         <Globe className='top-6' />
